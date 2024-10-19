@@ -7,10 +7,6 @@ app.secret_key = 'supersecretkey'  # 세션을 사용하기 위한 비밀 키
 def index():
     return render_template('dashboard.html')
 
-if __name__ == "__main__":
-    app.run()
-
-
 # 가상 데이터베이스로 사용할 딕셔너리 (유저와 딜러 목록)
 users = {
     "customer": [],
