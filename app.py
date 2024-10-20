@@ -3,9 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # 세션을 사용하기 위한 비밀 키
 
+# 기본 경로는 로그인 페이지로 리다이렉트
 @app.route('/')
 def index():
-    return render_template('dashboard.html')
+    return redirect(url_for('login'))
 
 # 가상 데이터베이스로 사용할 딕셔너리 (유저와 딜러 목록)
 users = {
@@ -48,11 +49,6 @@ vehicles = {
         "blinkers": "on"
     }
 }
-
-# 루트 경로 추가
-@app.route('/')
-def index():
-    return redirect(url_for('login'))  # 기본적으로 로그인 페이지로 리다이렉트
 
 # 1. 정상적인 유저 회원가입 페이지
 @app.route('/user/register', methods=['GET', 'POST'])
